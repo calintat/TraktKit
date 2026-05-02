@@ -15,7 +15,7 @@ public struct TraktMostShow: TraktObject {
     public let watcherCount: Int
     public let playCount: Int
     public let collectedCount: Int
-    public let collectorCount: Int
+    public let collectorCount: Int?
     public let show: TraktShow
     
     enum CodingKeys: String, CodingKey {
