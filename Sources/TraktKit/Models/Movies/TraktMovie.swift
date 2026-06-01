@@ -25,6 +25,7 @@ public struct TraktMovie: TraktObject {
     public let rating: Double?
     public let votes: Int?
     public let updatedAt: Date?
+    public let country: String?
     public let language: String?
     public let availableTranslations: [String]?
     public let genres: [String]?
@@ -49,6 +50,7 @@ public struct TraktMovie: TraktObject {
         case rating
         case votes
         case updatedAt = "updated_at"
+        case country
         case language
         case availableTranslations = "available_translations"
         case genres
@@ -75,6 +77,7 @@ public struct TraktMovie: TraktObject {
         rating = try container.decodeIfPresent(Double.self, forKey: .rating)
         votes = try container.decodeIfPresent(Int.self, forKey: .votes)
         updatedAt = try container.decodeIfPresent(Date.self, forKey: .updatedAt)
+        country = try container.decodeIfPresent(String.self, forKey: .country)
         language = try container.decodeIfPresent(String.self, forKey: .language)
         availableTranslations = try container.decodeIfPresent([String].self, forKey: .availableTranslations)
         genres = try container.decodeIfPresent([String].self, forKey: .genres)
@@ -96,6 +99,7 @@ public struct TraktMovie: TraktObject {
         rating: Double? = nil,
         votes: Int? = nil,
         updatedAt: Date? = nil,
+        country: String? = nil,
         language: String? = nil,
         availableTranslations: [String]? = nil,
         genres: [String]? = nil,
@@ -116,6 +120,7 @@ public struct TraktMovie: TraktObject {
         self.rating = rating
         self.votes = votes
         self.updatedAt = updatedAt
+        self.country = country
         self.language = language
         self.availableTranslations = availableTranslations
         self.genres = genres
