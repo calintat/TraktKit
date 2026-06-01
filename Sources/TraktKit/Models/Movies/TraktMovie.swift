@@ -29,6 +29,8 @@ public struct TraktMovie: TraktObject {
     public let availableTranslations: [String]?
     public let genres: [String]?
     public let certification: String?
+    public let afterCredits: Bool?
+    public let duringCredits: Bool?
 
     // Extended: Images
     public let images: TraktImages?
@@ -51,6 +53,8 @@ public struct TraktMovie: TraktObject {
         case availableTranslations = "available_translations"
         case genres
         case certification
+        case afterCredits = "after_credits"
+        case duringCredits = "during_credits"
 
         case images
     }
@@ -74,6 +78,8 @@ public struct TraktMovie: TraktObject {
         language = try container.decodeIfPresent(String.self, forKey: .language)
         availableTranslations = try container.decodeIfPresent([String].self, forKey: .availableTranslations)
         genres = try container.decodeIfPresent([String].self, forKey: .genres)
+        afterCredits = try container.decodeIfPresent(Bool.self, forKey: .afterCredits)
+        duringCredits = try container.decodeIfPresent(Bool.self, forKey: .duringCredits)
         images = try container.decodeIfPresent(TraktImages.self, forKey: .images)
     }
     
@@ -94,6 +100,8 @@ public struct TraktMovie: TraktObject {
         availableTranslations: [String]? = nil,
         genres: [String]? = nil,
         certification: String? = nil,
+        afterCredits: Bool? = nil,
+        duringCredits: Bool? = nil,
         images: TraktImages? = nil
     ) {
         self.title = title
@@ -112,6 +120,8 @@ public struct TraktMovie: TraktObject {
         self.availableTranslations = availableTranslations
         self.genres = genres
         self.certification = certification
+        self.afterCredits = afterCredits
+        self.duringCredits = duringCredits
         self.images = images
     }
 }
