@@ -44,6 +44,10 @@ public extension TraktManager {
          Range between `0` and `100`.
          */
         case ratings(ratings: (lower: NSNumber, upper: NSNumber))
+        /**
+         Trakt studio ID.
+         */
+        case studioIDs(ids: [Int])
         
         // FilterType
         public func value() -> (key: String, value: String) {
@@ -60,6 +64,8 @@ public extension TraktManager {
                 return ("runtimes", "\(lower)-\(upper)")
             case .ratings(ratings: (let lower, let upper)):
                 return ("ratings", "\(lower)-\(upper)")
+            case .studioIDs(let ids):
+                return ("studio_ids", ids.map(String.init).joined(separator: ","))
             }
         }
     }
